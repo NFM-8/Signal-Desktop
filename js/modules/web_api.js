@@ -466,6 +466,7 @@ function initialize({
       sendMessagesUnauth,
       setSignedPreKey,
       updateDeviceName,
+      unlinkDevice,
     };
 
     function _ajax(param) {
@@ -667,6 +668,14 @@ function initialize({
       return _ajax({
         call: 'devices',
         httpType: 'GET',
+      });
+    }
+
+    function unlinkDevice(deviceId) {
+      return _ajax({
+        call: 'devices',
+        httpType: 'DELETE',
+        urlParameters: "/" + deviceId
       });
     }
 

@@ -556,6 +556,10 @@ MessageSender.prototype = {
     return this.server.getStickerPackManifest(packId);
   },
 
+  unlinkDevice(deviceId) {
+    return this.server.unlinkDevice(deviceId);
+  },
+
   sendRequestConfigurationSyncMessage(options) {
     const myNumber = textsecure.storage.user.getNumber();
     const myDevice = textsecure.storage.user.getDeviceId();
@@ -1261,6 +1265,7 @@ textsecure.MessageSender = function MessageSenderWrapper(username, password) {
   this.getStickerPackManifest = sender.getStickerPackManifest.bind(sender);
   this.sendStickerPackSync = sender.sendStickerPackSync.bind(sender);
   this.syncViewOnceOpen = sender.syncViewOnceOpen.bind(sender);
+  this.unlinkDevice = sender.unlinkDevice.bind(sender);
 };
 
 textsecure.MessageSender.prototype = {

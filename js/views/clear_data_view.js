@@ -49,6 +49,14 @@
           error && error.stack ? error.stack : error
         );
       }
+      try {
+        const deviceId = parseInt(textsecure.storage.user.getDeviceId(), 10);
+        await textsecure.messaging.unlinkDevice(deviceId);
+      } catch (error) {
+        window.log.error('Failed to unlink device:',
+        error && error.stack ? error.stack : error
+        );
+      }
       window.restart();
     },
     render_attributes() {
